@@ -1,5 +1,5 @@
 
-(function(window){
+(function(){
 
 
 var RegistrationForm = function (obj) {
@@ -71,7 +71,7 @@ window.app = window.app || {};
 window.app.RegistrationForm = RegistrationForm;
 
 
-})(window)
+})()
 
  
 
