@@ -51,6 +51,7 @@ input:focus{
     margin-bottom: 2%;
     margin-left:2%;
     margin-right:2%;
+    position:relative;
 }
 
 .btn-wrap{
@@ -86,11 +87,44 @@ input:focus{
     color: #5f5f5f;
 }
 
+form .ng-valid.ng-dirty {
+    background-color: lightgreen
+}
 
-.invalid {
+form .ng-invalid.ng-dirty {
     background-color: pink
+}
+
+form .ng-invalid-email {
+     border: 2px solid lightcoral;
 }
 
 .match_pass {
     border: 2px solid lightcoral;
+}
+
+.error-box {
+    position: absolute;
+    top:-48px;
+    right:50px;
+    color:grey;
+    z-index: 9999;
+    line-height: 25px;
+    box-sizing: border-box;
+    border-radius: 8px;
+    background-color: #fff549;
+    padding:2%;
+    
+}
+
+.arrow-down {
+  width: 0; 
+  height: 0; 
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-top: 8px solid #fff549;
+  position: absolute;
+  bottom:-8px;
+  left:16px;
+
 }

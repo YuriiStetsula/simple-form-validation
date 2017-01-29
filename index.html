@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" ng-app="FormValidation">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -8,41 +8,58 @@
     <title>Registration Form</title>
     <link rel="stylesheet" href="registration-form.css">
 </head>
-<body>
+<body ng-controller="defaultCtrl as vm">
 
-    <div class="reg-form">
+    <div class="reg-form" >
         <div class="reg-inside-wrapper">
-           <form name="registration">
+           <form name="registration" novalidate ng-submit="vm.createNewUser(user)">
             <div class="reg-head">
                 <h2>Create  account</h2>
             </div>
             <div class="reg-inpt">
-                <input type="text"   id="name" placeholder="first name"> 
+                <input type="text"   id="name" placeholder="first name"
+                    ng-model="user.firstName" required
+                 > 
+
+               
             </div>
             <div class="reg-inpt">
-                <input type="text" id="name" placeholder="last name">
+                <input type="text" id="name" placeholder="last name"
+                    ng-model="user.lastName" required
+                >
             </div>
             <div class="reg-inpt">
-                <input type="text" id="name" placeholder="login">
+                <input type="text" id="name" placeholder="login"
+                    ng-model="user.login" required
+                >
             </div>
             <div class="reg-inpt">
-                <input type="text" id="name" placeholder="email">
+                <input type="email" id="name" placeholder="email" name="userEmail"
+                    ng-model="user.email" required >
+
+                <div class="error-box" ng-show="registration.userEmail.$invalid && registration.userEmail.$dirty ">
+                    {{vm.getError(registration.userEmail.$error)}}
+                    <div class="arrow-down"></div>
+                </div>
+
             </div>
             <div class="reg-inpt">
-                <input type="password"  class="pass" placeholder="password">
+                <input type="password"  class="pass" placeholder="password"
+                    ng-model="user.password" required
+                >
             </div>
              <div class="reg-inpt">
-                <input type="password" class="repeat_pass" placeholder="repeat password">
+                <input type="password" class="repeat_pass" placeholder="repeat password" required>
             </div>
             <div class="btn-wrap">
-                <input type="submit" class="btn" value="create">
+                <input type="submit" class="btn" value="create" ng-disabled="registration.$invalid">
             </div>
             </form>
            
         </div>
     </div>
-
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.min.js"></script>
  <script src="app.js"></script>
-  <script src="main.js"></script>
+  <!--<script src="main.js"></script>-->
 </body>
 </html>
